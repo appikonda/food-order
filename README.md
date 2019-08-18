@@ -22,7 +22,11 @@ To run the demo application in development mode, run the following commands in t
 npm install
 ```
 ```
-npm start
+npm run start:dev
+```
+Build
+```
+npm run build
 ```
 The application should be running at the following URLs:
 
