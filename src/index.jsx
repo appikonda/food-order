@@ -6,5 +6,5 @@ import '../public/favicon.ico';
 
 ReactDOM.render(
   <App />,
-  document.getElementById('root')
+  document.querySelector('#root')
 );

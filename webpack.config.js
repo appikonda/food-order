@@ -11,13 +11,13 @@ module.exports = env => {
     optimization: {
       usedExports: true
     },
-    devtool: 'eval',
+    devtool: 'eval-source-map',
     devServer: {
       historyApiFallback: true
     },
     output: {
       path: path.resolve(__dirname, "dist"),
-      filename: '[name].[hash].js',
+      filename: '[name].js',
       publicPath: '/'
     },
     resolve: {
