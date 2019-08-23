@@ -3,16 +3,12 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
-//import DialogTitle from '@material-ui/core/DialogTitle';
-import Paper from '@material-ui/core/Paper';
 import Iframe from 'react-iframe';
-//import Divider from '@material-ui/core/Divider';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
-//import Slide from '@material-ui/core/Slide';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -20,7 +16,10 @@ import CardContent from '@material-ui/core/CardContent';
 import Avatar from '@material-ui/core/Avatar';
 import { red } from '@material-ui/core/colors';
 import { CardActions } from '@material-ui/core';
+import moment from 'moment';
 
+const endTime = moment().hours(18).minutes(0).seconds(0);
+const startTime = moment().hours(11).minutes(0).seconds(0);
 
 const style = {
   card: {
@@ -38,17 +37,14 @@ const style = {
 
 
 class OrderFood extends Component {
-  
   constructor(props) {
     super(props);
     this.state = {
       showDialog: false
     }
   }
-
   
   render() {
-   
     if (this.state.showDialog) {
       return (
         <div>
@@ -58,21 +54,20 @@ class OrderFood extends Component {
     } else {
       return (
         <div >
+          <br/>
           <Container fixed >
           {this.renderCards()}
           </Container>
         </div>
       );
     }
-
   }
 
 
   renderCards() {
-
     return (
       <div >
-        < Grid container spacing={5}>
+        < Grid container  spacing={5}>
           <Grid item xs={10} sm={6}  >
             <Card style= {style.card}>
               <CardHeader
@@ -94,9 +89,7 @@ class OrderFood extends Component {
                 </Typography>
               </CardContent>
               <CardActions>
-              <Button variant="contained" color="primary" onClick={this.showSearchDiaglog.bind(this)}>
-                Order Now
-               </Button>
+              {this.showButton()}
               </CardActions>
             </Card>
           </ Grid>
@@ -121,9 +114,7 @@ class OrderFood extends Component {
                 </Typography>
               </CardContent>
               <CardActions>
-              <Button variant="contained" color="primary" onClick={this.showSearchDiaglog.bind(this)}>
-                Order Now
-               </Button>
+               {this.showButton()}
               </CardActions>
             </Card>
           </ Grid>
@@ -150,9 +141,7 @@ class OrderFood extends Component {
                 </Typography>
               </CardContent>
               <CardActions>
-              <Button variant="contained" color="primary" onClick={this.showSearchDiaglog.bind(this)}>
-                Order Now
-               </Button>
+              {this.showButton()}
               </CardActions>
             </Card>
           </ Grid>
@@ -177,75 +166,24 @@ class OrderFood extends Component {
                 </Typography>
               </CardContent>
               <CardActions>
-              Comming Soon
+              Coming Soon
               </CardActions>
             </Card>
           </ Grid>
         </ Grid>
       </div>
     );
-
   }
 
-  renderGridOptions() {
-
-    return (
-      <div >
-        <Grid container spacing={5}>
-          <Grid item xs={6} sm={6}  >
-            <Paper style={{ textAlign: 'center', color: '#212121', height: '40vh' }}>
-              Order your favorite Biryani for $6.99
-             <br />
-              <Button variant="contained" color="primary" onClick={this.showSearchDiaglog.bind(this)}>
-                Order
-      </Button>
-
-            </Paper>
-          </Grid>
-          <Grid item xs={6} sm={6} >
-            <Paper style={{ textAlign: 'center', color: '#212121', height: '40vh' }}>
-              Order One Curry Plate
-            <br />
-              <Button variant="contained" color="primary" onClick={this.showSearchDiaglog.bind(this)}>
-                Order
-      </Button>
-
-            </Paper>
-          </Grid>
-
-
-        </Grid>
-        <Grid container spacing={5}>
-
-          <Grid item xs={6} sm={6}  >
-            <Paper style={{ textAlign: 'center', color: '#212121', height: '40vh' }}>
-              Order Two Curry Plate
-             <br />
-              <Button variant="contained" color="primary" onClick={this.showSearchDiaglog.bind(this)}>
-                Order
-      </Button>
-
-            </Paper>
-          </Grid>
-          <Grid item xs={6} sm={6}  >
-            <Paper style={{ textAlign: 'center', color: '#212121', height: '40vh' }}>
-              Order full plate
-             <br />
-              <Button variant="contained" color="primary" onClick={this.showSearchDiaglog.bind(this)}>
-                Order
-      </Button>
-
-            </Paper>
-          </Grid>
-
-
-        </Grid>
-      </div>
-    );
-
+  showButton(){
+   return(<Button 
+    variant="contained" 
+    color="primary" 
+    onClick={this.showSearchDiaglog.bind(this)}
+    disabled= {!(moment().isAfter(startTime) && moment().isBefore(endTime))} >
+      Order Now
+     </Button>);
   }
-
-
 
   showSearchDiaglog() {
     this.setState({ showDialog: true });
@@ -273,9 +211,6 @@ class OrderFood extends Component {
             </Typography>
           </Toolbar>
         </AppBar>
-
-
-
         <Iframe url="https://docs.google.com/forms/d/e/1FAIpQLSdyKr7HLqYcw9uLIflgbRmy-7WHtb8fDuJuym8K5pYcW45q3g/viewform"
           width="100%"
           height="100%"
@@ -284,14 +219,9 @@ class OrderFood extends Component {
           className="myClassname"
           display="initial"
           position="relative" />
-
-
-
-
       </Dialog>
     )
   }
-
 }
 
 export default OrderFood;
