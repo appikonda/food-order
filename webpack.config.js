@@ -16,9 +16,9 @@ module.exports = env => {
       historyApiFallback: true
     },
     output: {
-      path: path.resolve(__dirname, "dist"),
+      path: path.resolve(__dirname, "build"),
       filename: '[name].js',
-      publicPath: '/'
+      publicPath: ''
     },
     resolve: {
       extensions: ['.webpack.js', '.web.js', '.js', '.jsx']
