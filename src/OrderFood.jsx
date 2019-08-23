@@ -85,7 +85,7 @@ class OrderFood extends Component {
                 subheader="$7.99"
               />
               <CardMedia style={style.media}
-                image="static/images/IMG_7737.JPG"
+                image={require('../static/images/IMG_7737.JPG')}
                 title="Biryani "
               />
               <CardContent>
@@ -112,7 +112,7 @@ class OrderFood extends Component {
                 subheader="$6.99"
               />
               <CardMedia style={style.media}
-                image="static/images/IMG_7734.JPG"
+                image={require('../static/images/IMG_7734.JPG')}
                 title="1 Curry "
               />
               <CardContent>
@@ -141,7 +141,7 @@ class OrderFood extends Component {
                 subheader="$6.99"
               />
               <CardMedia style={style.media}
-                image="static/images/IMG_7736.JPG"
+                image={require('../static/images/IMG_7736.JPG')}
                 title="2 Curries "
               />
               <CardContent>
@@ -168,7 +168,7 @@ class OrderFood extends Component {
                 subheader="$8.99"
               />
               <CardMedia style={style.media}
-                image="static/images/IMG_7735.JPG"
+                image={require('../static/images/IMG_7735.JPG')}
                 title="thali "
               />
               <CardContent>
